@@ -1,0 +1,347 @@
+============================================
+Arithmetic operators
+============================================
+
+a = 1 + 2
+b = 5 - 3
+c = 4 * 4
+d = 10 / 2
+e = 7 % 3
+f = 2 ^ 3
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (number)
+        (number))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (number)
+        (number))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (number)
+        (number))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (number)
+        (number))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (number)
+        (number))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (number)
+        (number)))))
+
+============================================
+Comparison operators
+============================================
+
+a = x == y
+b = x != y
+c = x < y
+d = x > y
+e = x <= y
+f = x >= y
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (identifier)
+        (identifier))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (identifier)
+        (identifier))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (identifier)
+        (identifier))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (identifier)
+        (identifier))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (identifier)
+        (identifier))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (identifier)
+        (identifier)))))
+
+============================================
+Boolean operators
+============================================
+
+a = true and false
+b = true or false
+c = not true
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (boolean)
+        (boolean))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (boolean)
+        (boolean))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (unary_expression
+        (boolean)))))
+
+============================================
+Bitwise operators
+============================================
+
+a = x & y
+b = x | y
+c = x << 2
+d = x >> 2
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (identifier)
+        (identifier))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (identifier)
+        (identifier))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (identifier)
+        (number))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (identifier)
+        (number)))))
+
+============================================
+Compound assignment
+============================================
+
+x += 5
+y -= 3
+z *= 2
+w /= 4
+v %= 3
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number)))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number)))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number)))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number)))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number))))
+
+============================================
+Bitwise compound assignment
+============================================
+
+a &= 0xFF
+b |= 0x01
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number)))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number))))
+
+============================================
+Global prefix
+============================================
+
+global.score = 100
+global.score += 10
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (member_expression
+        (identifier)
+        (identifier))
+      (number)))
+  (expression_statement
+    (assignment_expression
+      (member_expression
+        (identifier)
+        (identifier))
+      (number))))
+
+============================================
+Unary operators
+============================================
+
+a = -5
+b = not flag
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (unary_expression
+        (number))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (unary_expression
+        (identifier)))))
+
+============================================
+Subscript expression
+============================================
+
+x = arr[0]
+y = list[5]
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (subscript_expression
+        (identifier)
+        (number))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (subscript_expression
+        (identifier)
+        (number)))))
+
+============================================
+Member expression
+============================================
+
+x = obj.property
+y = obj["property"]
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (member_expression
+        (identifier)
+        (identifier))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (subscript_expression
+        (identifier)
+        (string)))))
+
+============================================
+Nested member access
+============================================
+
+a = obj.nested.value
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (member_expression
+        (member_expression
+          (identifier)
+          (identifier))
+        (identifier)))))
+
+============================================
+Call on subscript result
+============================================
+
+obj.items[0].method()
+
+---
+
+(source_file
+  (expression_statement
+    (call_expression
+      (member_expression
+        (subscript_expression
+          (member_expression
+            (identifier)
+            (identifier))
+          (number))
+        (identifier)))))

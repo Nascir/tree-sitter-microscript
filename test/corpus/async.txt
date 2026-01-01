@@ -1,0 +1,158 @@
+============================================
+Do block
+============================================
+
+do
+  x = x + 1
+end
+
+---
+
+(source_file
+  (do_block
+    (expression_statement
+      (assignment_expression
+        (identifier)
+        (binary_expression
+          (identifier)
+          (number))))))
+
+============================================
+After block
+============================================
+
+after 5 seconds do
+  print("time's up")
+end
+
+---
+
+(source_file
+  (after_block
+    (number)
+    (expression_statement
+      (call_expression
+        (identifier)
+        (argument_list
+          (string))))))
+
+============================================
+Every block
+============================================
+
+every 1 seconds do
+  print("tick")
+end
+
+---
+
+(source_file
+  (every_block
+    (number)
+    (expression_statement
+      (call_expression
+        (identifier)
+        (argument_list
+          (string))))))
+
+============================================
+Sleep statement
+============================================
+
+sleep 100
+
+---
+
+(source_file
+  (sleep_statement
+    (number)))
+
+============================================
+Sleep with seconds
+============================================
+
+sleep 2 seconds
+
+---
+
+(source_file
+  (sleep_statement
+    (number)))
+
+============================================
+After with milliseconds
+============================================
+
+after 500 milliseconds do
+  backToMainMenu()
+end
+
+---
+
+(source_file
+  (after_block
+    (number)
+    (expression_statement
+      (call_expression
+        (identifier)))))
+
+============================================
+Every with milliseconds
+============================================
+
+every 200 milliseconds do
+  score += 100
+end
+
+---
+
+(source_file
+  (every_block
+    (number)
+    (expression_statement
+      (assignment_expression
+        (identifier)
+        (number)))))
+
+============================================
+Sleep with singular second
+============================================
+
+sleep 1 second
+
+---
+
+(source_file
+  (sleep_statement
+    (number)))
+
+============================================
+Sleep with singular millisecond
+============================================
+
+sleep 1 millisecond
+
+---
+
+(source_file
+  (sleep_statement
+    (number)))
+
+============================================
+After with singular second
+============================================
+
+after 1 second do
+  print("done")
+end
+
+---
+
+(source_file
+  (after_block
+    (number)
+    (expression_statement
+      (call_expression
+        (identifier)
+        (argument_list
+          (string))))))

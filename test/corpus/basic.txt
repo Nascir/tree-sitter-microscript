@@ -1,0 +1,305 @@
+============================================
+Variable declarations
+============================================
+
+local x = 5
+local name = "test"
+local flag = true
+
+---
+
+(source_file
+  (variable_declaration
+    (identifier)
+    (number))
+  (variable_declaration
+    (identifier)
+    (string))
+  (variable_declaration
+    (identifier)
+    (boolean)))
+
+============================================
+Numbers
+============================================
+
+x = 42
+y = -3.14
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number)))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (unary_expression
+        (number)))))
+
+============================================
+Hexadecimal numbers
+============================================
+
+h1 = 0x7FFF
+h2 = 0xABCD
+h3 = 0X1a2B
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number)))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number)))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number))))
+
+============================================
+Scientific notation
+============================================
+
+e1 = 1e5
+e2 = 2.5e-3
+e3 = -4.5e-5
+e4 = 1E+10
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number)))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number)))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (unary_expression
+        (number))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number))))
+
+============================================
+String literals
+============================================
+
+s1 = "hello"
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (string))))
+
+============================================
+Single quote strings
+============================================
+
+s2 = 'hello world'
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (string))))
+
+============================================
+Triple quote strings
+============================================
+
+s3 = """this is a
+multi-line string"""
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (string
+        (triple_quoted_string
+          (string_content))))))
+
+============================================
+String escape sequences
+============================================
+
+s4 = "line1\nline2"
+s5 = "quote: \""
+s6 = "backslash: \\"
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (string
+        (escape_sequence))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (string
+        (escape_sequence))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (string
+        (escape_sequence)))))
+
+============================================
+Boolean literals
+============================================
+
+a = true
+b = false
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (boolean)))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (boolean))))
+
+============================================
+Comments
+============================================
+
+// single line comment
+
+---
+
+(source_file
+  (comment))
+
+============================================
+Block comments
+============================================
+
+/* this is a block comment */
+
+---
+
+(source_file
+  (comment))
+
+============================================
+Multiline block comment
+============================================
+
+/* this is
+   a multiline
+   block comment */
+
+---
+
+(source_file
+  (comment))
+
+============================================
+Inline block comment
+============================================
+
+x = /* inline */ 5
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (comment)
+      (number))))
+
+============================================
+List literals
+============================================
+
+nums = [1, 2, 3]
+empty = []
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (list_literal
+        (number)
+        (number)
+        (number))))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (list_literal))))
+
+============================================
+Object literals
+============================================
+
+point = object
+  x = 10
+  y = 20
+end
+
+---
+
+(source_file
+  (object_definition
+    name: (identifier)
+    (property_assignment
+      (identifier)
+      (number))
+    (property_assignment
+      (identifier)
+      (number))))
+
+============================================
+Delete statement
+============================================
+
+delete myvar
+delete obj.property
+delete obj["key"]
+delete this.something
+
+---
+
+(source_file
+  (delete_statement
+    (identifier))
+  (delete_statement
+    (member_expression
+      (identifier)
+      (identifier)))
+  (delete_statement
+    (subscript_expression
+      (identifier)
+      (string)))
+  (delete_statement
+    (member_expression
+      (this)
+      (identifier))))

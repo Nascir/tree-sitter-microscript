@@ -1,0 +1,23 @@
+{
+  "grammars": [
+    {
+      "name": "microscript",
+      "path": ".",
+      "scope": "source.microscript",
+      "file-types": ["ms"],
+      "injection-regex": "^microscript$",
+      "highlights": "queries/highlights.scm",
+      "locals": "queries/locals.scm",
+      "tags": "queries/tags.scm",
+      "injections": "queries/injections.scm",
+      "indents": "queries/indents.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "links": {
+      "repository": "https://github.com/Nascir/tree-sitter-microscript"
+    }
+  }
+}

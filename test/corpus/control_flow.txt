@@ -1,0 +1,233 @@
+============================================
+If statement
+============================================
+
+if x > 0 then
+  x = x - 1
+end
+
+---
+
+(source_file
+  (expression_statement
+    (conditional_expression
+      condition: (binary_expression
+        (identifier)
+        (number))
+      consequence: (expression_statement
+        (assignment_expression
+          (identifier)
+          (binary_expression
+            (identifier)
+            (number)))))))
+
+============================================
+If-else statement
+============================================
+
+if x > 0 then
+  print("positive")
+else
+  print("non-positive")
+end
+
+---
+
+(source_file
+  (expression_statement
+    (conditional_expression
+      condition: (binary_expression
+        (identifier)
+        (number))
+      consequence: (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (string))))
+      (else_clause
+        (expression_statement
+          (call_expression
+            (identifier)
+            (argument_list
+              (string))))))))
+
+============================================
+If-elsif-else statement
+============================================
+
+if x < 0 then
+  print("negative")
+elsif x == 0 then
+  print("zero")
+else
+  print("positive")
+end
+
+---
+
+(source_file
+  (expression_statement
+    (conditional_expression
+      condition: (binary_expression
+        (identifier)
+        (number))
+      consequence: (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (string))))
+      (elsif_clause
+        (binary_expression
+          (identifier)
+          (number))
+        (expression_statement
+          (call_expression
+            (identifier)
+            (argument_list
+              (string)))))
+      (else_clause
+        (expression_statement
+          (call_expression
+            (identifier)
+            (argument_list
+              (string))))))))
+
+============================================
+Conditional expression as value
+============================================
+
+sign = if x >= 0 then "positive" else "negative" end
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (conditional_expression
+        condition: (binary_expression
+          (identifier)
+          (number))
+        consequence: (expression_statement
+          (string))
+        (else_clause
+          (expression_statement
+            (string)))))))
+
+============================================
+While loop
+============================================
+
+while i < 10
+  i = i + 1
+end
+
+---
+
+(source_file
+  (while_statement
+    (binary_expression
+      (identifier)
+      (number))
+    (expression_statement
+      (assignment_expression
+        (identifier)
+        (binary_expression
+          (identifier)
+          (number))))))
+
+============================================
+For loop
+============================================
+
+for i = 0 to 10
+  print(i)
+end
+
+---
+
+(source_file
+  (for_statement
+    (identifier)
+    (number)
+    (number)
+    (expression_statement
+      (call_expression
+        (identifier)
+        (argument_list
+          (identifier))))))
+
+============================================
+For loop with by
+============================================
+
+for i = 10 to 0 by -1
+  print(i)
+end
+
+---
+
+(source_file
+  (for_statement
+    (identifier)
+    (number)
+    (number)
+    (unary_expression
+      (number))
+    (expression_statement
+      (call_expression
+        (identifier)
+        (argument_list
+          (identifier))))))
+
+============================================
+For in loop
+============================================
+
+for element in list
+  print(element)
+end
+
+---
+
+(source_file
+  (for_in_statement
+    (identifier)
+    (identifier)
+    (expression_statement
+      (call_expression
+        (identifier)
+        (argument_list
+          (identifier))))))
+
+============================================
+Break statement
+============================================
+
+while true
+  break
+end
+
+---
+
+(source_file
+  (while_statement
+    (boolean)
+    (break_statement)))
+
+============================================
+Continue statement
+============================================
+
+for i = 1 to 10
+  continue
+end
+
+---
+
+(source_file
+  (for_statement
+    (identifier)
+    (number)
+    (number)
+    (continue_statement)))

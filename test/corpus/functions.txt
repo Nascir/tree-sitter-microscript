@@ -1,0 +1,198 @@
+============================================
+Function definition
+============================================
+
+add = function(a, b)
+  return a + b
+end
+
+---
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list
+      (parameter
+        (identifier))
+      (parameter
+        (identifier)))
+    (return_statement
+      (binary_expression
+        (identifier)
+        (identifier)))))
+
+============================================
+Function call
+============================================
+
+result = add(1, 2)
+print("hello")
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (call_expression
+        (identifier)
+        (argument_list
+          (number)
+          (number)))))
+  (expression_statement
+    (call_expression
+      (identifier)
+      (argument_list
+        (string)))))
+
+============================================
+Method call
+============================================
+
+obj.method()
+
+---
+
+(source_file
+  (expression_statement
+    (call_expression
+      (member_expression
+        (identifier)
+        (identifier)))))
+
+============================================
+Function with no parameters
+============================================
+
+greet = function()
+  print("Hello!")
+end
+
+---
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (expression_statement
+      (call_expression
+        (identifier)
+        (argument_list
+          (string))))))
+
+============================================
+Function with default arguments
+============================================
+
+display = function(text = "placeholder")
+  print(text)
+end
+
+---
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list
+      (parameter
+        (identifier)
+        (string)))
+    (expression_statement
+      (call_expression
+        (identifier)
+        (argument_list
+          (identifier))))))
+
+============================================
+Implicit return
+============================================
+
+square = function(x) x * x end
+
+---
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list
+      (parameter
+        (identifier)))
+    (expression_statement
+      (binary_expression
+        (identifier)
+        (identifier)))))
+
+============================================
+Method call on result
+============================================
+
+result.add(1).multiply(2)
+
+---
+
+(source_file
+  (expression_statement
+    (call_expression
+      (member_expression
+        (call_expression
+          (member_expression
+            (identifier)
+            (identifier))
+          (argument_list
+            (number)))
+        (identifier))
+      (argument_list
+        (number)))))
+
+============================================
+Nested function calls
+============================================
+
+outer(inner(value))
+
+---
+
+(source_file
+  (expression_statement
+    (call_expression
+      (identifier)
+      (argument_list
+        (call_expression
+          (identifier)
+          (argument_list
+            (identifier)))))))
+
+============================================
+Function in object
+============================================
+
+math = object
+  abs = function(x)
+    if x < 0 then
+      return -x
+    else
+      return x
+    end
+  end
+end
+
+---
+
+(source_file
+  (object_definition
+    name: (identifier)
+    (method_definition
+      name: (identifier)
+      (parameter_list
+        (parameter
+          (identifier)))
+      (expression_statement
+        (conditional_expression
+          condition: (binary_expression
+            (identifier)
+            (number))
+          consequence: (return_statement
+            (unary_expression
+              (identifier)))
+          (else_clause
+            (return_statement
+              (identifier))))))))

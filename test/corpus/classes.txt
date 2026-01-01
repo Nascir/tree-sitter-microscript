@@ -1,0 +1,275 @@
+============================================
+Class definition
+============================================
+
+Animal = class
+  constructor = function(name)
+    this.name = name
+  end
+end
+
+---
+
+(source_file
+  (class_definition
+    name: (identifier)
+    (constructor_definition
+      (parameter_list
+        (parameter
+          (identifier)))
+      (expression_statement
+        (assignment_expression
+          (member_expression
+            (this)
+            (identifier))
+          (identifier))))))
+
+============================================
+Class inheritance
+============================================
+
+Dog = class extends Animal
+end
+
+---
+
+(source_file
+  (class_definition
+    name: (identifier)
+    parent: (identifier)))
+
+============================================
+Object definition
+============================================
+
+player = object
+  x = 0
+  y = 0
+  setPosition = function(x, y)
+    position_x = x
+    position_y = y
+  end
+end
+
+---
+
+(source_file
+  (object_definition
+    name: (identifier)
+    (property_assignment
+      (identifier)
+      (number))
+    (property_assignment
+      (identifier)
+      (number))
+    (method_definition
+      name: (identifier)
+      (parameter_list
+        (parameter
+          (identifier))
+        (parameter
+          (identifier)))
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (identifier)))
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (identifier))))))
+
+============================================
+New expression
+============================================
+
+obj = new MyClass()
+
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (new_expression
+        (identifier)))))
+
+============================================
+Super method call
+============================================
+
+super.method()
+
+---
+
+(source_file
+  (expression_statement
+    (call_expression
+      (member_expression
+        (super)
+        (identifier)))))
+
+============================================
+Class with methods
+============================================
+
+Counter = class
+  constructor = function()
+    this.count = 0
+  end
+
+  increment = function()
+    count += 1
+  end
+
+  getCount = function()
+    return count
+  end
+end
+
+---
+
+(source_file
+  (class_definition
+    name: (identifier)
+    (constructor_definition
+      (expression_statement
+        (assignment_expression
+          (member_expression
+            (this)
+            (identifier))
+          (number))))
+    (method_definition
+      name: (identifier)
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (number))))
+    (method_definition
+      name: (identifier)
+      (return_statement
+        (identifier)))))
+
+============================================
+Class inheritance with super
+============================================
+
+Boss = class extends Enemy
+  constructor = function(position)
+    super(position)
+    hp = 50
+  end
+
+  move = function()
+    super()
+    hp += 1
+  end
+end
+
+---
+
+(source_file
+  (class_definition
+    name: (identifier)
+    parent: (identifier)
+    (constructor_definition
+      (parameter_list
+        (parameter
+          (identifier)))
+      (expression_statement
+        (call_expression
+          (super)
+          (argument_list
+            (identifier))))
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (number))))
+    (method_definition
+      name: (identifier)
+      (expression_statement
+        (call_expression
+          (super)))
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (number))))))
+
+============================================
+Operator overloading with string method names
+============================================
+
+Vector3 = class
+  constructor = function(x, y, z)
+    this.x = x
+    this.y = y
+    this.z = z
+  end
+
+  "+" = function(a, b)
+    new Vector3(a.x + b.x, a.y + b.y, a.z + b.z)
+  end
+end
+
+---
+
+(source_file
+  (class_definition
+    name: (identifier)
+    (constructor_definition
+      (parameter_list
+        (parameter
+          (identifier))
+        (parameter
+          (identifier))
+        (parameter
+          (identifier)))
+      (expression_statement
+        (assignment_expression
+          (member_expression
+            (this)
+            (identifier))
+          (identifier)))
+      (expression_statement
+        (assignment_expression
+          (member_expression
+            (this)
+            (identifier))
+          (identifier)))
+      (expression_statement
+        (assignment_expression
+          (member_expression
+            (this)
+            (identifier))
+          (identifier))))
+    (method_definition
+      name: (string)
+      (parameter_list
+        (parameter
+          (identifier))
+        (parameter
+          (identifier)))
+      (expression_statement
+        (new_expression
+          (identifier)
+          (argument_list
+            (binary_expression
+              (member_expression
+                (identifier)
+                (identifier))
+              (member_expression
+                (identifier)
+                (identifier)))
+            (binary_expression
+              (member_expression
+                (identifier)
+                (identifier))
+              (member_expression
+                (identifier)
+                (identifier)))
+            (binary_expression
+              (member_expression
+                (identifier)
+                (identifier))
+              (member_expression
+                (identifier)
+                (identifier)))))))))
